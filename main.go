@@ -86,12 +86,28 @@ func main() {
 
 	var total int
 
-	for x := 0; x < len(right); x++ {
-		diff := right[x] - left[x]
-		if diff < 0 {
-			diff = -diff
+	//Day 1 Part 1 O(n)
+	// for x := 0; x < len(right); x++ {
+	// 	diff := right[x] - left[x]
+	// 	if diff < 0 {
+	// 		diff = -diff
+	// 	}
+	// 	total += diff
+	// }
+
+
+	// Day 1 Part 2 O(n^2)
+	for x := 0; x < len(left); x++ {
+		curLeft := left[x]
+		freq := 0
+		for y := 0; y < len(right); y++ {
+		curRight:= right[y]
+		if curLeft == curRight {
+			freq++
 		}
-		total += diff
+		}
+		total += curLeft * freq
 	}
+
 	fmt.Println(total)
 }
